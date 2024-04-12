@@ -7,40 +7,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final items = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+
     return MaterialApp(
+      title: 'welcome to Flutter',
       home: Scaffold(
-        appBar: AppBar(title: const Text( 'Stack')),
-        body: Center(
-          child: Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  color: Colors.red,
-                  height: 100,
-                  width: 100,
-                ), // Container
-              ), // Align
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  color: Colors.blue,
-                  height: 100,
-                  width: 80,
-                ), // Container
-              ), // Align
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  color: Colors.purple,
-                  height: 70,
-                  width: 70,
-                ), // Container
-              ), // Align
-            ], // <Widget>[]
-          ), // Stack
-        ), // Center
-      ), // Scaffold
-    ); // MaterialApp
+        appBar: AppBar(
+          title: const Text('welcome to Flutter'),
+        ),
+        body: ListView.separated(
+          padding: const EdgeInsets.all(10.0),
+           itemCount: items.length,
+           itemBuilder: (BuildContext ctx, int index) {
+            return SizedBox(
+              height:  100,
+              child: Text('level ${items[index]}'),);
+           },
+           separatorBuilder: (BuildContext context, int index) => const Divider() ,
+           )
+        ),
+      );
   }
 }
